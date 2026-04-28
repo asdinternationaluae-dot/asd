@@ -1,0 +1,113 @@
+.main {
+  background: var(--color-bg);
+  min-height: 100vh;
+}
+
+.headerSection {
+  padding: 180px 0 var(--space-8);
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.contentSection {
+  padding-top: var(--space-12);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: var(--space-10);
+  align-items: start;
+}
+
+.infoCard {
+  background: var(--color-surface);
+  padding: var(--space-8);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--color-border-light);
+  box-shadow: var(--shadow-md);
+}
+
+.infoTitle {
+  font-size: var(--text-2xl);
+  margin-bottom: var(--space-4);
+}
+
+.infoDesc {
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin-bottom: var(--space-8);
+}
+
+.infoList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  margin-bottom: var(--space-8);
+}
+
+.infoList li {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-4);
+}
+
+.iconBox {
+  background: var(--color-primary-lighter);
+  color: var(--color-primary);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.infoList strong {
+  display: block;
+  font-size: var(--text-base);
+  margin-bottom: 2px;
+}
+
+.infoList p {
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.mapPlaceholder {
+  width: 100%;
+  height: 250px;
+  background: var(--color-border-light);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.formCard {
+  background: var(--color-surface);
+  padding: var(--space-10);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--color-border-light);
+  box-shadow: var(--shadow-lg);
+}
+
+.formTitle {
+  font-size: var(--text-2xl);
+  margin-bottom: var(--space-8);
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .formCard {
+    padding: var(--space-6);
+  }
+}

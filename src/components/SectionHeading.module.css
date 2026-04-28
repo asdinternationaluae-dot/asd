@@ -1,0 +1,73 @@
+.wrap {
+  margin-bottom: var(--space-12);
+}
+
+.centered {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  background: var(--color-accent-lighter);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+  margin-bottom: var(--space-4);
+}
+
+.light .eyebrow {
+  color: rgba(58, 170, 53, 0.9);
+  background: rgba(58, 170, 53, 0.15);
+}
+
+.title {
+  font-size: var(--text-4xl);
+  font-weight: 800;
+  color: var(--color-text);
+  line-height: 1.15;
+  max-width: 700px;
+}
+
+.light .title {
+  color: white;
+}
+
+.subtitle {
+  margin-top: var(--space-4);
+  font-size: var(--text-lg);
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  max-width: 600px;
+}
+
+.light .subtitle {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.divider {
+  margin-top: var(--space-6);
+  width: 60px;
+  height: 4px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+}
+
+.centered .divider {
+  align-self: center;
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: var(--text-2xl);
+  }
+  .subtitle {
+    font-size: var(--text-base);
+  }
+}
