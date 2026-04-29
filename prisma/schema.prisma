@@ -6,8 +6,9 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
-  url      = "file:./dev.db"
+  provider = "postgresql"
+  url      = env("POSTGRES_PRISMA_URL")
+  directUrl = env("POSTGRES_URL_NON_POOLING")
 }
 
 model Product {
@@ -24,24 +25,4 @@ model Product {
   featured        Boolean  @default(false)
   order           Int      @default(0)
   createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
-}
-
-model Inquiry {
-  id        String   @id @default(cuid())
-  name      String
-  email     String
-  phone     String   @default("")
-  subject   String
-  message   String
-  status    String   @default("NEW") // NEW, READ, REPLIED
-  createdAt DateTime @default(now())
-}
-
-model User {
-  id           String @id @default(cuid())
-  email        String @unique
-  passwordHash String
-  name         String
-  role         String @default("ADMIN")
 }
