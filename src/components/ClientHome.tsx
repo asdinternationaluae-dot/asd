@@ -32,7 +32,7 @@ export default function ClientHome({ featuredProducts }: { featuredProducts: Pro
     // Switch back to video after 3 seconds
     setTimeout(() => {
       setShowImage(false);
-    }, 3000);
+    }, 6000);
   };
 
   return (
@@ -109,8 +109,8 @@ export default function ClientHome({ featuredProducts }: { featuredProducts: Pro
                           alt="ASD Innovation"
                           className={styles.heroLogo}
                           initial={{ scale: 1.5 }}
-                          animate={{ scale: 1 }}
-                          transition={{ duration: 3, ease: "easeOut" }}
+                          animate={{ scale: 0.5 }}
+                          transition={{ duration: 5, ease: "easeOut" }}
                           style={{ objectFit: 'contain' }}
                         />
                       </motion.div>
