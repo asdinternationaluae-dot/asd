@@ -361,6 +361,15 @@
   .heroVisual {
     margin-top: 0;
     margin-bottom: var(--space-4);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .heroImageWrap {
+    width: 80vw;
+    max-width: 320px;
+    height: auto;
   }
   
   .statsGrid {
