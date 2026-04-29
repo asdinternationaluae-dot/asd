@@ -21,7 +21,7 @@ export default function Footer() {
             {/* Brand */}
             <div className={styles.brandCol}>
               <div className={styles.logoWrap}>
-                <Image src="/logo-white.png" alt="ASD International" width={130} height={50} />
+                <Image src="/ASD-LOGO.png" alt="ASD International" width={130} height={120} style={{ objectFit: 'contain' }} />
               </div>
               <p className={styles.tagline}>Innovation for your health</p>
               <p className={styles.brandDesc}>
