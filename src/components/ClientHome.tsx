@@ -105,7 +105,7 @@ export default function ClientHome({ featuredProducts }: { featuredProducts: Pro
                         exit={{ opacity: 0 }}
                       >
                         <motion.img 
-                          src="/ASDNEW2.png" 
+                          src="/ASD-LOGO.png" 
                           alt="ASD Innovation"
                           className={styles.heroLogo}
                           initial={{ scale: 1.5 }}
