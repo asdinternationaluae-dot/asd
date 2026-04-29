@@ -150,6 +150,15 @@
 }
 
 @media (max-width: 768px) {
+  .inner {
+    min-height: 68px;
+  }
+
+  .logoImg img {
+    width: 98px !important;
+    height: auto !important;
+  }
+
   .desktopNav,
   .desktopCta {
     display: none;
