@@ -8,28 +8,10 @@ import styles from './partners.module.css';
 
 const partners = [
   {
-    name: 'WHW Plastics',
-    location: 'United Kingdom',
-    type: 'Manufacturing Partner',
-    description: 'A major British manufacturing entity specializing in dental and laboratory plastics. ASD International serves as their strategic partner and distributor for high-quality laboratory supplies in the UAE.'
-  },
-  {
-    name: 'Acrostone',
-    location: 'Egypt / International',
-    type: 'Exclusive Agency',
-    description: 'A leading brand in dental products and medical supplies. ASD International is the exclusive regional agent for Acrostone, providing advanced dental materials and laboratory solutions manufactured under rigorous standards.'
-  },
-  {
     name: 'Fulton Pharma',
     location: 'Italy',
     type: 'Pharmaceutical Partner',
     description: 'A premier European pharmaceutical company. ASD International collaborates with Fulton Pharma to distribute specialized medical lines, including the high-performance INPRO portfolio.'
-  },
-  {
-    name: 'International Medical (Pharma)',
-    location: 'Global',
-    type: 'Distribution Partner',
-    description: 'Strategic collaboration focused on the global distribution of pharmaceuticals and medical requisites, ensuring that the highest grade of healthcare products reaches the Middle East market.'
   }
 ];
 
