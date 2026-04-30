@@ -3,6 +3,7 @@
 import { prisma } from '@/lib/db';
 import { getSession, login, logout, requireAuth } from '@/lib/auth';
 import { redirect } from 'next/navigation';
+import { compareSync, hashSync } from 'bcryptjs';
 
 export async function signIn(prevState: any, formData: FormData) {
   const email = formData.get('email') as string;
