@@ -44,7 +44,7 @@ export default function AdminLogin() {
               type="email" 
               className="form-input" 
               required 
-              defaultValue="admin@asd-intl.com"
+              defaultValue="fawzia@asdinternational.co"
             />
           </div>
 
@@ -56,7 +56,7 @@ export default function AdminLogin() {
               type="password" 
               className="form-input" 
               required 
-              defaultValue="changeme"
+              defaultValue="admin@123"
             />
           </div>
 
