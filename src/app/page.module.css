@@ -358,6 +358,10 @@
     justify-content: center;
   }
   
+  .heroActions a:last-child {
+    display: none;
+  }
+  
   .heroVisual {
     margin-top: 0;
     margin-bottom: var(--space-4);
