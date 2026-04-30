@@ -378,10 +378,16 @@
   
   .aboutContainer {
     grid-template-columns: 1fr;
+    gap: var(--space-8);
   }
   
   .aboutImage {
     order: 2;
+  }
+
+  .aboutText, .aboutList {
+    max-width: 100%;
+    width: 100%;
   }
 }
 
