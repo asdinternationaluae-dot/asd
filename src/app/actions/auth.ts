@@ -1,29 +1,37 @@
 'use server';
 
-import { login, logout } from '@/lib/auth';
-import { redirect } from 'next/navigation';
+import { prisma } from '@/lib/db';
+import { requireAuth } from '@/lib/auth';
+import { hashSync, compareSync } from 'bcryptjs';
+import { auth } from '@/lib/auth';
 
-export async function signIn(prevState: unknown, formData: FormData) {
-  const email = (formData.get('email') as string)?.trim();
-  const password = formData.get('password') as string;
-
-  if (!email || !password) {
-    return { error: 'Please enter your email and password.' };
+export async function updatePassword(formData: FormData) {
+  const session = await auth();
+  if (!session?.user?.email) {
+    return { success: false, error: 'Unauthorized' };
   }
 
-  try {
-    const user = await login(email, password);
-    if (!user) {
-      return { error: 'Invalid email or password.' };
-    }
-  } catch {
-    return { error: 'Something went wrong. Please try again.' };
+  const currentPassword = formData.get('currentPassword') as string;
+  const newPassword = formData.get('newPassword') as string;
+
+  const user = await prisma.user.findUnique({
+    where: { email: session.user.email },
+  });
+
+  if (!user || !user.passwordHash) {
+    return { success: false, error: 'User not found' };
   }
 
-  redirect('/admin');
-}
+  const isCorrect = compareSync(currentPassword, user.passwordHash);
+  if (!isCorrect) {
+    return { success: false, error: 'Incorrect current password' };
+  }
 
-export async function signOut() {
-  await logout();
-  redirect('/admin/login');
+  const newHash = hashSync(newPassword, 10);
+  await prisma.user.update({
+    where: { email: session.user.email },
+    data: { passwordHash: newHash },
+  });
+
+  return { success: true };
 }

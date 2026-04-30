@@ -65,7 +65,7 @@ export default function Footer() {
                 </li>
                 <li className={styles.contactItem}>
                   <Mail size={16} />
-                  <a href="mailto:info@asdinternationaluae.com" className={styles.footerLink}>info@asdinternationaluae.com</a>
+                  <a href="mailto:info@asdinternational.co" className={styles.footerLink}>info@asdinternational.co</a>
                 </li>
                 <li className={styles.contactItem}>
                   <MapPin size={16} style={{ flexShrink: 0 }} />

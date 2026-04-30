@@ -237,16 +237,16 @@ async function main() {
   }
   console.log(`✅ Seeded ${products.length} products`);
 
-  const adminPassword = hashSync('changeme', 10);
+  const adminPassword = hashSync('admin@123', 10);
   await prisma.user.create({
     data: {
-      email: 'admin@asd-intl.com',
+      email: 'fawzia@asdinternational.co',
       passwordHash: adminPassword,
       name: 'Admin',
       role: 'ADMIN',
     },
   });
-  console.log('✅ Seeded admin user (admin@asd-intl.com / changeme)');
+  console.log('✅ Seeded admin user (fawzia@asdinternational.co / admin@123)');
 
   await prisma.inquiry.createMany({
     data: [

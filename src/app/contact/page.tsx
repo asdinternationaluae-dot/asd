@@ -50,8 +50,7 @@ export default function ContactPage() {
                   <li>
                     <div className={styles.iconBox}><Mail size={20} /></div>
                     <div>
-                      <strong>Email</strong>
-                      <p>info@asdinternationaluae.com</p>
+                      <a href="mailto:info@asdinternational.co" className={styles.footerLink}>info@asdinternational.co</a>
                     </div>
                   </li>
                   <li>
