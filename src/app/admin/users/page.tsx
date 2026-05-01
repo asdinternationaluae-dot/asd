@@ -1,7 +1,7 @@
 import { getUsers } from '@/app/actions/users';
 import { UserPlus, Trash2, Shield } from 'lucide-react';
 import Link from 'next/link';
-import styles from '../admin.module.css';
+import styles from '@/app/admin/admin.module.css';
 
 export default async function AdminUsersPage() {
   const users = await getUsers();

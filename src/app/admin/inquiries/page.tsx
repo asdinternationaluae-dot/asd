@@ -1,5 +1,5 @@
 import { getInquiries } from '@/app/actions/inquiries';
-import styles from '../admin.module.css';
+import styles from '@/app/admin/admin.module.css';
 import InquiriesList from './InquiriesList';
 
 export default async function AdminInquiriesPage() {

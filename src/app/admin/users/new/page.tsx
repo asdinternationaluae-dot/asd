@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { createUser } from '@/app/actions/users';
-import styles from '../admin.module.css';
+import styles from '@/app/admin/admin.module.css';
 
 export default function NewUserPage() {
   const router = useRouter();
