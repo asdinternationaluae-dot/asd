@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Package, MessageSquare, LogOut, LayoutDashboard, User } from 'lucide-react';
+import { Package, MessageSquare, LogOut, LayoutDashboard, User, Users } from 'lucide-react';
 import { signOut } from '@/app/actions/auth';
 import { getSession } from '@/lib/auth';
 import styles from './admin.module.css';
@@ -28,6 +28,9 @@ export default async function AdminLayout({ children }: { children: React.ReactN
           </Link>
           <Link href="/admin/profile" className={styles.navLink}>
             <User size={20} /> Profile
+          </Link>
+          <Link href="/admin/users" className={styles.navLink}>
+            <Users size={20} /> Manage Admins
           </Link>
         </nav>
 

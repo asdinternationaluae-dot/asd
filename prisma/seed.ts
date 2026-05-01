@@ -238,8 +238,14 @@ async function main() {
   console.log(`✅ Seeded ${products.length} products`);
 
   const adminPassword = hashSync('admin@123', 10);
-  await prisma.user.create({
-    data: {
+  await prisma.user.upsert({
+    where: { email: 'fawzia@asdinternational.co' },
+    update: {
+      passwordHash: adminPassword,
+      name: 'Admin',
+      role: 'ADMIN',
+    },
+    create: {
       email: 'fawzia@asdinternational.co',
       passwordHash: adminPassword,
       name: 'Admin',
