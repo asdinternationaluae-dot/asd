@@ -4,7 +4,25 @@ import { useScroll, useTransform, motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
-import { Menu, X, Linkedin } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
+
+const LinkedInIcon = ({ size = 20 }: { size?: number }) => (
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    width={size} 
+    height={size} 
+    viewBox="0 0 24 24" 
+    fill="none" 
+    stroke="currentColor" 
+    strokeWidth="2" 
+    strokeLinecap="round" 
+    strokeLinejoin="round"
+  >
+    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+    <rect width="4" height="12" x="2" y="9"/>
+    <circle cx="4" cy="4" r="2"/>
+  </svg>
+);
 import styles from './Navbar.module.css';
 
 const navLinks = [
@@ -68,7 +86,7 @@ export default function Navbar() {
               className={styles.socialLink}
               aria-label="LinkedIn"
             >
-              <Linkedin size={20} />
+              <LinkedInIcon size={20} />
             </a>
             <Link href="/contact" className="btn btn-primary btn-sm">
               Get in Touch
@@ -134,7 +152,7 @@ export default function Navbar() {
                       className={styles.socialLink}
                       style={{ padding: '0.5rem' }}
                     >
-                      <Linkedin size={24} />
+                      <LinkedInIcon size={24} />
                     </a>
                   </div>
                 </motion.div>
