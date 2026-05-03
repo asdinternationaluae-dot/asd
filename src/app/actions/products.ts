@@ -44,6 +44,23 @@ export async function createProduct(formData: FormData) {
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/(^-|-$)/g, '');
 
+  // Handle Image Upload
+  let imageUrl = formData.get('imageUrl') as string || '';
+  const imageFile = formData.get('imageFile') as File;
+  
+  if (imageFile && imageFile.size > 0) {
+    const buffer = Buffer.from(await imageFile.arrayBuffer());
+    const mimeType = imageFile.type;
+    imageUrl = `data:${mimeType};base64,${buffer.toString('base64')}`;
+  }
+
+  // Handle Ingredients (One by one)
+  const ingredients = formData.getAll('ingredients[]') as string[];
+  const ingredientsJson = JSON.stringify(ingredients.filter(i => i.trim() !== ''));
+
+  // Handle Benefits (Normal text)
+  const benefits = formData.get('benefits') as string || '';
+
   await prisma.product.create({
     data: {
       name,
@@ -51,10 +68,10 @@ export async function createProduct(formData: FormData) {
       description: formData.get('description') as string,
       longDescription: (formData.get('longDescription') as string) || '',
       category: formData.get('category') as string,
-      benefits: formData.get('benefits') as string || '[]',
-      ingredients: formData.get('ingredients') as string || '[]',
+      benefits: benefits,
+      ingredients: ingredientsJson,
       dosage: (formData.get('dosage') as string) || '',
-      imageUrl: (formData.get('imageUrl') as string) || '',
+      imageUrl,
       featured: formData.get('featured') === 'true',
       order: parseInt(formData.get('order') as string) || 0,
     },
@@ -74,6 +91,23 @@ export async function updateProduct(id: string, formData: FormData) {
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/(^-|-$)/g, '');
 
+  // Handle Image Upload
+  let imageUrl = formData.get('imageUrl') as string || '';
+  const imageFile = formData.get('imageFile') as File;
+  
+  if (imageFile && imageFile.size > 0) {
+    const buffer = Buffer.from(await imageFile.arrayBuffer());
+    const mimeType = imageFile.type;
+    imageUrl = `data:${mimeType};base64,${buffer.toString('base64')}`;
+  }
+
+  // Handle Ingredients (One by one)
+  const ingredients = formData.getAll('ingredients[]') as string[];
+  const ingredientsJson = JSON.stringify(ingredients.filter(i => i.trim() !== ''));
+
+  // Handle Benefits (Normal text)
+  const benefits = formData.get('benefits') as string || '';
+
   await prisma.product.update({
     where: { id },
     data: {
@@ -82,10 +116,10 @@ export async function updateProduct(id: string, formData: FormData) {
       description: formData.get('description') as string,
       longDescription: (formData.get('longDescription') as string) || '',
       category: formData.get('category') as string,
-      benefits: formData.get('benefits') as string || '[]',
-      ingredients: formData.get('ingredients') as string || '[]',
+      benefits: benefits,
+      ingredients: ingredientsJson,
       dosage: (formData.get('dosage') as string) || '',
-      imageUrl: (formData.get('imageUrl') as string) || '',
+      imageUrl,
       featured: formData.get('featured') === 'true',
       order: parseInt(formData.get('order') as string) || 0,
     },

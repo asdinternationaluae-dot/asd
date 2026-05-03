@@ -2,6 +2,7 @@ import { getUsers } from '@/app/actions/users';
 import { UserPlus, Trash2, Shield } from 'lucide-react';
 import Link from 'next/link';
 import styles from '@/app/admin/admin.module.css';
+import DeleteUserButton from './DeleteUserButton';
 
 export default async function AdminUsersPage() {
   const users = await getUsers();
@@ -39,15 +40,7 @@ export default async function AdminUsersPage() {
                 </td>
                 <td>{new Date(user.createdAt).toLocaleDateString()}</td>
                 <td>
-                  <form action={async () => {
-                    'use server';
-                    const { deleteUser } = await import('@/app/actions/users');
-                    await deleteUser(user.id);
-                  }}>
-                    <button type="submit" className="btn btn-sm" style={{ color: 'var(--color-error)', border: '1px solid var(--color-error)' }}>
-                      <Trash2 size={14} />
-                    </button>
-                  </form>
+                  <DeleteUserButton id={user.id} name={user.name} />
                 </td>
               </tr>
             ))}

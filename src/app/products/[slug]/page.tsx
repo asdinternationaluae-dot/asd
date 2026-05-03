@@ -33,8 +33,26 @@ export default async function ProductDetailPage({ params }: PageProps) {
   // Parse JSON strings to arrays
   let benefitsList: string[] = [];
   let ingredientsList: string[] = [];
-  try { benefitsList = JSON.parse(product.benefits); } catch (e) { console.error(e) }
-  try { ingredientsList = JSON.parse(product.ingredients); } catch (e) { console.error(e) }
+  
+  // Handle Benefits (Supports both old JSON array and new plain text format)
+  if (product.benefits) {
+    try {
+      const parsed = JSON.parse(product.benefits);
+      benefitsList = Array.isArray(parsed) ? parsed : [product.benefits];
+    } catch (e) {
+      // It's plain text, split by newlines
+      benefitsList = product.benefits.split('\n').map(b => b.trim()).filter(b => b !== '');
+    }
+  }
+
+  // Handle Ingredients
+  if (product.ingredients) {
+    try {
+      ingredientsList = JSON.parse(product.ingredients);
+    } catch (e) {
+      ingredientsList = [product.ingredients];
+    }
+  }
 
   return (
     <>
