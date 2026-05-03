@@ -4,7 +4,7 @@ import { useScroll, useTransform, motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Linkedin } from 'lucide-react';
 import styles from './Navbar.module.css';
 
 const navLinks = [
@@ -61,6 +61,15 @@ export default function Navbar() {
 
           {/* Desktop CTA */}
           <div className={styles.desktopCta}>
+            <a 
+              href="https://www.linkedin.com/company/asd-international-medical-requisites" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className={styles.socialLink}
+              aria-label="LinkedIn"
+            >
+              <Linkedin size={20} />
+            </a>
             <Link href="/contact" className="btn btn-primary btn-sm">
               Get in Touch
             </Link>
@@ -109,14 +118,25 @@ export default function Navbar() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: navLinks.length * 0.05 }}
                 >
-                  <Link
-                    href="/contact"
-                    className="btn btn-primary"
-                    onClick={() => setMobileOpen(false)}
-                    style={{ display: 'inline-flex', marginTop: '0.5rem' }}
-                  >
-                    Get in Touch
-                  </Link>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginTop: '1rem' }}>
+                    <Link
+                      href="/contact"
+                      className="btn btn-primary"
+                      onClick={() => setMobileOpen(false)}
+                      style={{ display: 'inline-flex' }}
+                    >
+                      Get in Touch
+                    </Link>
+                    <a 
+                      href="https://www.linkedin.com/company/asd-international-medical-requisites" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className={styles.socialLink}
+                      style={{ padding: '0.5rem' }}
+                    >
+                      <Linkedin size={24} />
+                    </a>
+                  </div>
                 </motion.div>
               </nav>
             </motion.div>

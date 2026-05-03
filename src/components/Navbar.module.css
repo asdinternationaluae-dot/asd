@@ -93,8 +93,24 @@
 .desktopCta {
   display: flex;
   align-items: center;
-  gap: var(--space-3);
+  gap: var(--space-4);
   z-index: 1;
+}
+
+.socialLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0077b5;
+  transition: all var(--transition-fast);
+  padding: var(--space-1);
+  border-radius: var(--radius-md);
+}
+
+.socialLink:hover {
+  transform: translateY(-2px);
+  color: #004182;
+  background: rgba(0, 119, 181, 0.05);
 }
 
 .mobileToggle {
