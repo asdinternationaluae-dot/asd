@@ -23,7 +23,13 @@ interface Product {
   featured: boolean;
 }
 
-export default function ClientHome({ featuredProducts }: { featuredProducts: Product[] }) {
+export default function ClientHome({ 
+  featuredProducts, 
+  totalProducts 
+}: { 
+  featuredProducts: Product[], 
+  totalProducts: number 
+}) {
   const [showImage, setShowImage] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -255,7 +261,7 @@ export default function ClientHome({ featuredProducts }: { featuredProducts: Pro
               <div className={styles.statCard}>
                 <div className={styles.statIcon}><Pill /></div>
                 <h3 className={styles.statNumber}>
-                  <AnimatedCounter target={9} />
+                  <AnimatedCounter target={totalProducts} />
                 </h3>
                 <p className={styles.statLabel}>Premium Products</p>
               </div>

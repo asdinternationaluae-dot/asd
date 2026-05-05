@@ -15,6 +15,10 @@ export async function getFeaturedProducts() {
   });
 }
 
+export async function getProductCount() {
+  return prisma.product.count();
+}
+
 export async function getProductBySlug(slug: string) {
   return prisma.product.findUnique({ where: { slug } });
 }
