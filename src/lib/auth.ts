@@ -3,9 +3,11 @@ import { cookies } from 'next/headers';
 import { prisma } from './db';
 import { compareSync } from 'bcryptjs';
 
-const secretKey = new TextEncoder().encode(
-  process.env.AUTH_SECRET || 'asd-international-secret-key-change-in-production-2024'
-);
+if (!process.env.AUTH_SECRET) {
+  throw new Error('AUTH_SECRET environment variable is not set');
+}
+
+const secretKey = new TextEncoder().encode(process.env.AUTH_SECRET);
 
 export async function encrypt(payload: Record<string, unknown>) {
   return new SignJWT(payload)
