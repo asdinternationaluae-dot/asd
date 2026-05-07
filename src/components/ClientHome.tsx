@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight, CheckCircle2, Globe, Shield, Users, Award } from 'lucide-react';
@@ -30,16 +30,7 @@ export default function ClientHome({
   featuredProducts: Product[], 
   totalProducts: number 
 }) {
-  const [showImage, setShowImage] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
-
-  const handleVideoEnded = () => {
-    setShowImage(true);
-    // Switch back to video after 3 seconds
-    setTimeout(() => {
-      setShowImage(false);
-    }, 6000);
-  };
 
   return (
     <>
@@ -86,42 +77,18 @@ export default function ClientHome({
                 className={styles.heroImageWrap}
               >
                 <div className={styles.heroImageInner}>
-                  <AnimatePresence mode="wait">
-                    {!showImage ? (
-                      <motion.video 
-                        key="video"
-                        ref={videoRef}
-                        src="/ASDNEW1.mp4" 
-                        autoPlay 
-                        muted 
-                        playsInline
-                        onEnded={handleVideoEnded}
-                        className={styles.heroLogo}
-                        style={{ scale: 1.3 }}
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                      />
-                    ) : (
-                      <motion.div
-                        key="image"
-                        className={styles.heroImageContainer}
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                      >
-                        <motion.img 
-                          src="/ASD-LOGO.png" 
-                          alt="ASD Innovation"
-                          className={styles.heroLogo}
-                          initial={{ scale: 1.5 }}
-                          animate={{ scale: 0.5 }}
-                          transition={{ duration: 5, ease: "easeOut" }}
-                          style={{ objectFit: 'contain' }}
-                        />
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                  <motion.video 
+                    ref={videoRef}
+                    src="/ASD.mp4" 
+                    autoPlay 
+                    muted 
+                    playsInline
+                    loop
+                    className={styles.heroLogo}
+                    style={{ scale: 1.3 }}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                  />
                 </div>
               </motion.div>
 

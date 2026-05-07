@@ -123,7 +123,8 @@ Zinco Q10 is a patent formula combining Zinc with Coenzyme Q10, providing dual a
 | Coenzyme Q10  | 100 mg |
 
 **Recommended Dose:**
-As directed by a healthcare professional. Available in capsules — 30 per pack.
+One tablet twice daily or as directed by doctor.
+
 
 **Key Benefits:**
 - Immunity booster
