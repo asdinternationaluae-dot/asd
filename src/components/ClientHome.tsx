@@ -137,10 +137,13 @@ export default function ClientHome({
               transition={{ duration: 0.7 }}
             >
               <div className={styles.aboutImageInner}>
-                 {/* Placeholder for real lab image */}
-                 <div className={styles.aboutImagePlaceholder}>
-                   Our Commitment to Quality
-                 </div>
+                <Image 
+                  src="/img/quality-commitment.png" 
+                  alt="Our Commitment to Quality" 
+                  fill 
+                  style={{ objectFit: 'cover' }}
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
               </div>
             </motion.div>
             

@@ -47,4 +47,8 @@ dev.db
 *.png
 *.jpeg
 !public/
+!public/**/*.png
+!public/**/*.jpg
+!public/**/*.jpeg
+!public/**/*.mp4
 !img/
