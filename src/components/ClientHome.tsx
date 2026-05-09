@@ -12,16 +12,7 @@ import SectionHeading from './SectionHeading';
 import AnimatedCounter from './AnimatedCounter';
 import ScrollVideo from './ScrollVideo';
 import styles from '../app/page.module.css';
-
-interface Product {
-  id: string;
-  name: string;
-  slug: string;
-  description: string;
-  category: string;
-  imageUrl: string;
-  featured: boolean;
-}
+import { Product } from '@/lib/types';
 
 export default function ClientHome({ 
   featuredProducts, 
