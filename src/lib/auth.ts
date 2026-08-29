@@ -4,10 +4,13 @@ import { prisma } from './db';
 import { compareSync } from 'bcryptjs';
 
 const secretKey = new TextEncoder().encode(
-  process.env.AUTH_SECRET || 'asd-international-secret-key-change-in-production-2024'
+  process.env.AUTH_SECRET || 'build-time-secret-not-for-production'
 );
 
 export async function encrypt(payload: Record<string, unknown>) {
+  if (!process.env.AUTH_SECRET && process.env.NODE_ENV === 'production') {
+    throw new Error('AUTH_SECRET environment variable is not set');
+  }
   return new SignJWT(payload)
     .setProtectedHeader({ alg: 'HS256' })
     .setIssuedAt()
@@ -16,6 +19,9 @@ export async function encrypt(payload: Record<string, unknown>) {
 }
 
 export async function decrypt(token: string) {
+  if (!process.env.AUTH_SECRET && process.env.NODE_ENV === 'production') {
+    throw new Error('AUTH_SECRET environment variable is not set');
+  }
   try {
     const { payload } = await jwtVerify(token, secretKey, {
       algorithms: ['HS256'],

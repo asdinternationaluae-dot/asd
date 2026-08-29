@@ -3,10 +3,14 @@ import type { NextRequest } from 'next/server';
 import { jwtVerify } from 'jose';
 
 const secretKey = new TextEncoder().encode(
-  process.env.AUTH_SECRET || 'asd-international-secret-key-change-in-production-2024'
+  process.env.AUTH_SECRET || 'build-time-secret-not-for-production'
 );
 
 export async function proxy(request: NextRequest) {
+  if (!process.env.AUTH_SECRET && process.env.NODE_ENV === 'production') {
+    throw new Error('AUTH_SECRET environment variable is not set');
+  }
+
   const { pathname } = request.nextUrl;
 
   // Protect /admin routes (except /admin/login)

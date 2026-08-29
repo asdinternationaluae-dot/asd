@@ -1,11 +1,11 @@
 'use server';
 
 import { prisma } from '@/lib/db';
-import { getSession, login, logout, requireAuth } from '@/lib/auth';
+import { login, logout, requireAuth } from '@/lib/auth';
 import { redirect } from 'next/navigation';
 import { compareSync, hashSync } from 'bcryptjs';
 
-export async function signIn(prevState: any, formData: FormData) {
+export async function signIn(prevState: unknown, formData: FormData) {
   const email = formData.get('email') as string;
   const password = formData.get('password') as string;
 
@@ -24,7 +24,7 @@ export async function signOut() {
 }
 
 export async function updatePassword(formData: FormData) {
-  const session = await getSession();
+  const session = await requireAuth();
   if (!session?.email) {
     return { success: false, error: 'Unauthorized' };
   }
